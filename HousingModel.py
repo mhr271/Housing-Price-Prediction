@@ -15,7 +15,7 @@ y = df["price"]
 x = df.drop("price",axis=1)
 print(df)
 
-categorical_cols = x.select_dtypes(include=["object", "str"]).columns
+categorical_cols = x.select_dtypes(include=["object"]).columns
 numerical_cols = x.select_dtypes(include=["number"]).columns
 
 preprocessor = ColumnTransformer(
