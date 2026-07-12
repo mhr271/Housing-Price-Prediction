@@ -8,3 +8,9 @@ from sklearn.metrics import mean_squared_error,r2_score
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import OneHotEncoder
 from sklearn.compose import ColumnTransformer
+
+df = pd.read_csv("Housing.csv")
+
+y = df["price"]
+x = df.drop("price",axis=1)
+print(df)
