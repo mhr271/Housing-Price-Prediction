@@ -14,3 +14,13 @@ df = pd.read_csv("Housing.csv")
 y = df["price"]
 x = df.drop("price",axis=1)
 print(df)
+
+categorical_cols = x.select_dtypes(include=["object", "str"]).columns
+numerical_cols = x.select_dtypes(include=["number"]).columns
+
+preprocessor = ColumnTransformer(
+    transformers=[ ('cat',OneHotEncoder(drop='first',handle_unknown='ignore'),categorical_cols),
+                   ('num','passthrough',numerical_cols)
+
+    ]
+)
