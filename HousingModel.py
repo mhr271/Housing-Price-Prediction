@@ -8,6 +8,7 @@ from sklearn.metrics import mean_squared_error,r2_score
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import OneHotEncoder
 from sklearn.compose import ColumnTransformer
+from sklearn.preprocessing import StandardScaler
 
 df = pd.read_csv("Housing.csv")
 
@@ -24,11 +25,13 @@ preprocessor = ColumnTransformer(
 
     ]
 )
+
 x_train , x_test , y_train ,y_test = train_test_split(x,y,test_size=0.2,random_state=42)
 print(x_train.shape , x_test.shape , y_train.shape , y_test.shape)
 
 lr = Pipeline([
     ('preprocess',preprocessor),
+    ('scale',StandardScaler()),
     ('model',LinearRegression())
 ])
 
@@ -48,8 +51,10 @@ lr_results = pd.DataFrame(
     [["Linear Regression", lr_train_mse, lr_train_r2, lr_test_mse, lr_test_r2]],
     columns=["Model", "Train MSE", "Train R2", "Test MSE", "Test R2"],
 )
+
 rf = Pipeline([
     ('preprocess',preprocessor),
+    ('scale',StandardScaler()),
     ('model',RandomForestRegressor(max_depth=4,random_state=42))
 
 ])
@@ -72,3 +77,4 @@ rf_results = pd.DataFrame(
 
 results = pd.concat([lr_results, rf_results], ignore_index=True)
 print(results.to_string(index=False))
+
