@@ -59,11 +59,11 @@ rf.fit(x_train,y_train)
 y_rf_train_pred = rf.predict(x_train)
 y_rf_test_pred = rf.predict(x_test)
 
-rf_train_mse = mean_squared_error(y_train,y_lr_train_pred)
-rf_train_r2 =r2_score(y_train,y_lr_train_pred)
+rf_train_mse = mean_squared_error(y_train,y_rf_train_pred)
+rf_train_r2 =r2_score(y_train,y_rf_train_pred)
 
-rf_test_mse =mean_squared_error(y_test,y_lr_test_pred)
-rf_test_r2 = r2_score(y_test,y_lr_test_pred)
+rf_test_mse =mean_squared_error(y_test,y_rf_test_pred)
+rf_test_r2 = r2_score(y_test,y_rf_test_pred)
 
 rf_results = pd.DataFrame(
     [["RandomForest Regressor", rf_train_mse, rf_train_r2, rf_test_mse, rf_test_r2]],
