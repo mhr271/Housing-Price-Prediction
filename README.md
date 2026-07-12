@@ -36,6 +36,6 @@ This project uses `Housing.csv`, which contains the following features for each 
 | Random Forest Regressor (max_depth=4) | 8.51e+11 | 0.724 | 2.31e+12 | **0.544** |
 
 **Linear Regression outperforms Random Forest on the test set**, despite Random Forest fitting the training data slightly better. The gap between Random Forest's train R² (0.724) and test R² (0.544) is a sign of mild overfitting relative to Linear Regression, which generalizes more consistently.
-Both models tend to compress the price range — overestimating cheaper houses and underestimating more expensive ones, visible as points drifting away from the red diagonal (perfect prediction) at the high end of the price scale.
+Both models tend to compress the price range overestimating cheaper houses and underestimating more expensive ones, visible as points drifting away from the red diagonal (perfect prediction) at the high end of the price scale.
 ## Notes
 - Dataset is taken from kaggle 
