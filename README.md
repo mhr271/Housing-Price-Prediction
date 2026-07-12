@@ -22,7 +22,6 @@ This project uses `Housing.csv`, which contains the following features for each 
 | `parking` | Number of parking spaces |
 | `prefarea` | Whether the house is in a preferred area (yes/no) |
 | `furnishingstatus` | Furnishing status (furnished / semi-furnished / unfurnished) |
-545 rows total — 436 used for training, 109 held out for testing (80/20 split, `random_state=42`).
 ## Requirements
 - Python 3.8+
 - pandas
