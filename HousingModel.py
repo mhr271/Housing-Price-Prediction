@@ -48,3 +48,27 @@ lr_results = pd.DataFrame(
     [["Linear Regression", lr_train_mse, lr_train_r2, lr_test_mse, lr_test_r2]],
     columns=["Model", "Train MSE", "Train R2", "Test MSE", "Test R2"],
 )
+rf = Pipeline([
+    ('preprocess',preprocessor),
+    ('model',RandomForestRegressor(max_dept=4))
+
+])
+
+rf.fit(x_train,y_train)
+
+y_rf_train_pred = rf.predict(x_train)
+y_rf_test_pred = rf.predict(x_test)
+
+rf_train_mse = mean_squared_error(y_train,y_lr_train_pred)
+rf_train_r2 =r2_score(y_train,y_lr_train_pred)
+
+rf_test_mse =mean_squared_error(y_test,y_lr_test_pred)
+rf_test_r2 = r2_score(y_test,y_lr_test_pred)
+
+rf_results = pd.DataFrame(
+    [["RandomForest Regressor", rf_train_mse, rf_train_r2, rf_test_mse, rf_test_r2]],
+    columns=["Model", "Train MSE", "Train R2", "Test MSE", "Test R2"],
+)
+
+results = pd.concat([lr_results, rf_results], ignore_index=True)
+print(results.to_string(index=False))
