@@ -50,7 +50,7 @@ lr_results = pd.DataFrame(
 )
 rf = Pipeline([
     ('preprocess',preprocessor),
-    ('model',RandomForestRegressor(max_dept=4))
+    ('model',RandomForestRegressor(max_depth=4,random_state=42))
 
 ])
 
