@@ -1,5 +1,9 @@
 import pandas as pd 
 import numpy as np 
+import os
+
+os.environ.setdefault("MPLCONFIGDIR", "./.matplotlib")
+
 import matplotlib.pyplot as plt 
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
@@ -77,4 +81,26 @@ rf_results = pd.DataFrame(
 
 results = pd.concat([lr_results, rf_results], ignore_index=True)
 print(results.to_string(index=False))
+
+fig, axes = plt.subplots(1, 2, figsize=(10, 5))
+
+min_price = min(y_test.min(), y_lr_test_pred.min(), y_rf_test_pred.min())
+max_price = max(y_test.max(), y_lr_test_pred.max(), y_rf_test_pred.max())
+
+axes[0].scatter(y_test, y_lr_test_pred, c="#7CAE00", alpha=0.5)
+axes[0].plot([min_price, max_price], [min_price, max_price], "#F8766D")
+axes[0].set_title("Linear Regression")
+axes[0].set_xlabel("Actual price")
+axes[0].set_ylabel("Predicted price")
+
+axes[1].scatter(y_test, y_rf_test_pred, c="#00BFC4", alpha=0.5)
+axes[1].plot([min_price, max_price], [min_price, max_price], "#F8766D")
+axes[1].set_title("Random Forest")
+axes[1].set_xlabel("Actual price")
+axes[1].set_ylabel("Predicted price")
+
+plt.tight_layout()
+plt.savefig("housing_predictions.png", dpi=150)
+plt.show() 
+
 
