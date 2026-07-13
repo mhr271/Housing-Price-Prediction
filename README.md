@@ -14,7 +14,7 @@ This project uses `Housing.csv`, which contains the following features for each 
 | `bedrooms` | Number of bedrooms |
 | `bathrooms` | Number of bathrooms |
 | `stories` | Number of stories |
-| `mainroad` | Whether the house faces a main road (yes/no) |
+| `mainroad` | Whether the house faces a main road (yes/no) | 
 | `guestroom` | Whether the house has a guest room (yes/no) |
 | `basement` | Whether the house has a basement (yes/no) |
 | `hotwaterheating` | Whether the house has hot water heating (yes/no) |
